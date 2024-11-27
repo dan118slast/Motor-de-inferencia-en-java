@@ -3,10 +3,8 @@ package motor.de.inferencia;
 import estructuras.Grafo;
 import estructuras.Nodo;
 import estructuras.Inferencia;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
+import java.util.*;
 /**
  *
  * @author USUARIO
@@ -42,7 +40,10 @@ public class Motor_de_inferencia {
             System.out.println("Opciones: ");
             System.out.println("1. Agregar hipótesis y hechos");
             System.out.println("2. Seleccionar hechos para hacer una inferencia");
-            System.out.println("3. Salir");
+            System.out.println("3. Ver el grafo actual");
+            System.out.println("4. Guardar grafo en un archivo");
+            System.out.println("5. Cargar grafo desde un archivo");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = sc.nextInt();
             sc.nextLine();  // Limpiar el buffer
@@ -100,16 +101,26 @@ public class Motor_de_inferencia {
                     break;
 
                 case 3:
-                    // Salir del programa
-                    System.out.println("Saliendo del programa.");
-                    sc.close();
-                    return;
-
-                case 4:
-                    // Ver el grafo actual (hipótesis y hechos asociados)
                     System.out.println("Estado actual del grafo:");
                     graph.imprimirGrafo();
                     break;
+
+                case 4:
+                    System.out.print("Ingrese el nombre del archivo para guardar el grafo: ");
+                    String archivoGuardar = sc.nextLine();
+                    graph.guardarEnArchivo(archivoGuardar);
+                    break;
+
+                case 5:
+                    System.out.print("Ingrese el nombre del archivo para cargar el grafo: ");
+                    String archivoCargar = sc.nextLine();
+                    graph = Grafo.cargarDesdeArchivo(archivoCargar);
+                    break;
+
+                case 6:
+                    System.out.println("Saliendo del programa.");
+                    sc.close();
+                    return;
 
                 default:
                     System.out.println("Opción no válida, por favor intente de nuevo.");

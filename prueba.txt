@@ -1,0 +1,3 @@
+H:V -> E:V, F:F
+E:V -> D:F, C:V
+C:V -> A:V, B:F
